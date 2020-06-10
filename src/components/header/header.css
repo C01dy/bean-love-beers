@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /*height: 70px;*/
+    margin: 0 auto;
+}
+
+.header-cart-icon {
+    font-size: 25px;
+    padding: 0;
+}
+
+.header-logo {
+    font-family: 'Abril Fatface', cursive;
+}

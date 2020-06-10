@@ -1,6 +1,7 @@
 import React from 'react';
 import './beers-list.css';
-import BeersListItem from "../beers-list-item";
+import BeersListItem from "../../beers-list-item";
+import {NavLink} from "react-router-dom";
 
 const BeersList = ({beers}) => {
 	return (
@@ -8,7 +9,9 @@ const BeersList = ({beers}) => {
 			{
 				beers.map(beer => {
 					return (
-						<BeersListItem key={beer.id} beer={beer}/>
+						<NavLink key={beer.id} to={`/beer/${beer.id}`}>
+							<BeersListItem beer={beer}/>
+						</NavLink>
 					)
 				})
 			}

@@ -16,3 +16,5 @@ const WithPunkbeerService = (Wrapped) => {
 		)
 	}
 };
+
+export default WithPunkbeerService;

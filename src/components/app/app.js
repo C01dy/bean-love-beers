@@ -9,7 +9,7 @@ const beerList = (
 	<Route
 		path="/"
 		exact
-		render={() =>  <BeersListContainer/> }/>
+		render={() => <BeersListContainer/>}/>
 );
 
 const beerPage = (
@@ -17,7 +17,7 @@ const beerPage = (
 		path="/beer/:id"
 		render={({match}) => {
 			const {id} = match.params;
-			return ( <BeerPageContainer itemId={id}/> )
+			return (<BeerPageContainer itemId={id}/>)
 		}}/>
 );
 
@@ -26,10 +26,12 @@ function App() {
 	return (
 		<div className="app">
 			<Header/>
-			<Switch>
-				{beerList}
-				{beerPage}
-			</Switch>
+			<div className="pages-wrap mt-3 container">
+				<Switch>
+					{beerList}
+					{beerPage}
+				</Switch>
+			</div>
 		</div>
 	);
 }

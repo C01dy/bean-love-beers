@@ -1,0 +1,28 @@
+.beer-page-image {
+    max-width: 130px;
+    max-height: 350px;
+}
+
+.beer-page-items-list {
+    list-style-type: square;
+    width: 100%;
+}
+
+.tagline {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.beer-page-name {
+    font-weight: 600;
+}
+
+.beer-page-description-value {
+    display: inline-flex;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 4px;
+    color: white;
+    padding: 0 8px;
+}

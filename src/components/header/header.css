@@ -4,13 +4,25 @@
     justify-content: space-around;
     /*height: 70px;*/
     margin: 0 auto;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    background-color: whitesmoke;
 }
 
 .header-cart-icon {
-    font-size: 25px;
+    font-size: 20px;
     padding: 0;
 }
 
 .header-logo {
     font-family: 'Abril Fatface', cursive;
+}
+
+.header-title:hover {
+    text-decoration-line: underline;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

@@ -1,3 +1,7 @@
 import BeerPage from "./beer-page";
+import DescriptionItem from "./description-item";
 
-export default BeerPage;
+export {
+	BeerPage,
+	DescriptionItem
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './beers-list-item.css'
+import {abvColor} from "../../helpers-fn/style-helper";
 
 const BeersListItem = (props) => {
 
@@ -16,7 +17,7 @@ const BeersListItem = (props) => {
 	return (
 		<div className="card mb-3 beer-list-item btn">
 			<div className="row no-gutters beers-info">
-				<p className={`m-0 abv ${abv >= 5 ? "text-danger" : "text-warning"}`}>
+				<p className={`m-0 abv ${abvColor(abv, 'text')}`}>
 					Alcohol: {abv}%
 				</p>
 				<p className="brewed">
@@ -30,7 +31,9 @@ const BeersListItem = (props) => {
 				</div>
 				<div className="col-md-8">
 					<div className="card-body beers-content">
-						<h5 className="card-title beer-name">{name}</h5>
+						<span>
+							<h5 className="card-title beer-name">{name}</h5>
+						</span>
 						<p className="card-text beer-description">{description}</p>
 					</div>
 				</div>

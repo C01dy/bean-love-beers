@@ -4,9 +4,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 10px;
-    /*max-height: 190px;*/
+    min-height: 210px;
     overflow: hidden;
-    max-width: 360px;
+    max-width: 350px;
     /*border: none;*/
 }
 
@@ -48,7 +48,9 @@
 
 .item-cart-icon {
     margin: 5px 5px 0 0;
-    border-radius: 20%;
+    padding: 6px;
+    border-radius: 50%;
+    border: none;
     /*align-self: flex-end;*/
 }
 

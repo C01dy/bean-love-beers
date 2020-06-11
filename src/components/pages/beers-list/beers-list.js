@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const BeersList = ({beers}) => {
 	return (
-		<div className="beer-list container mt-4">
+		<div className="beer-list container">
 			{
 				beers.map(beer => {
 					return (

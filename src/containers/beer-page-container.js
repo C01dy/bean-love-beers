@@ -4,8 +4,7 @@ import {connect} from "react-redux";
 import {fetchBeerSuccess, fetchBeerRequest, fetchBeerError} from "../actions";
 import {WithPunkbeerService} from '../components/HOC';
 import {BeerPage} from '../components/pages/beer-page'
-import Preloader from "../components/preloader";
-import ErrorIndicator from "../components/error-indicator";
+import RenderComponent from "../components/render-component";
 
 
 class BeerPageContainer extends Component {
@@ -20,17 +19,10 @@ class BeerPageContainer extends Component {
 
 	render() {
 		const {beer, isLoading, error} = this.props;
-
-		if (isLoading) {
-			return <Preloader/>
-		}
-
-		if (error) {
-			return <ErrorIndicator/>
-		}
-
 		return (
-			<BeerPage beer={beer}/>
+			<RenderComponent isLoading={isLoading} error={error}>
+				<BeerPage beer={beer}/>
+			</RenderComponent>
 		)
 	}
 }

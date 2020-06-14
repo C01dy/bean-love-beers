@@ -1,6 +1,13 @@
 import {
-	FETCH_BEERS_SUCCESS, FETCH_BEERS_REQUEST, FETCH_BEERS_ERROR,
-	FETCH_BEER_SUCCESS, FETCH_BEER_REQUEST, FETCH_BEER_ERROR
+	FETCH_BEERS_SUCCESS,
+	FETCH_BEERS_REQUEST,
+	FETCH_BEERS_ERROR,
+	FETCH_BEER_SUCCESS,
+	FETCH_BEER_REQUEST,
+	FETCH_BEER_ERROR,
+	FETCH_SEARCH_BEER_SUCCESS,
+	FETCH_SEARCH_BEER_REQUEST,
+	FETCH_SEARCH_BEER_ERROR, BEER_ADDED_TO_FAVOURITE
 } from "./actions-types";
 
 const fetchBeersSuccess = (beers) => {
@@ -11,9 +18,7 @@ const fetchBeersSuccess = (beers) => {
 };
 
 const fetchBeersRequest = () => {
-	return {
-		type: FETCH_BEERS_REQUEST
-	}
+	return {type: FETCH_BEERS_REQUEST}
 };
 
 const fetchBeersError = (error) => {
@@ -31,15 +36,38 @@ const fetchBeerSuccess = (beer) => {
 };
 
 const fetchBeerRequest = () => {
-	return {
-		type: FETCH_BEER_REQUEST
-	}
+	return {type: FETCH_BEER_REQUEST}
 };
 
 const fetchBeerError = (error) => {
 	return {
 		type: FETCH_BEER_ERROR,
 		payload: error
+	}
+};
+
+const fetchSearchBeerSuccess = (beer) => {
+	return {
+		type: FETCH_SEARCH_BEER_SUCCESS,
+		payload: beer
+	}
+};
+
+const fetchSearchBeerRequest = () => {
+	return {type: FETCH_SEARCH_BEER_REQUEST}
+};
+
+const fetchSearchBeerError = (error) => {
+	return {
+		type: FETCH_SEARCH_BEER_ERROR,
+		payload: error
+	}
+};
+
+const beerAddedToFavourite = (itemId) => {
+	return {
+		type: BEER_ADDED_TO_FAVOURITE,
+		payload: itemId
 	}
 };
 
@@ -50,5 +78,11 @@ export {
 
 	fetchBeerSuccess,
 	fetchBeerError,
-	fetchBeerRequest
+	fetchBeerRequest,
+
+	fetchSearchBeerSuccess,
+	fetchSearchBeerError,
+	fetchSearchBeerRequest,
+
+	beerAddedToFavourite
 }

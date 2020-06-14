@@ -1,7 +1,7 @@
 import BeerPage from "./beer-page";
-import DescriptionItem from "./description-item";
+import DescriptionListItem from "./description-list-item";
 
 export {
 	BeerPage,
-	DescriptionItem
+	DescriptionListItem,
 }

@@ -44,8 +44,16 @@ const ebcColor = (ebc) => {
 	}
 };
 
+const ibuLevel = (ibu) => {
+	if (ibu <= 20) {
+		return "bg-success"
+	} else if (ibu <= 50) {
+		return "bg-warning";
+	} else return "bg-danger";
+};
 
 export {
 	abvColor,
-	ebcColor
+	ebcColor,
+	ibuLevel
 }

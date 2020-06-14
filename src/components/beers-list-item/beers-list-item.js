@@ -5,14 +5,9 @@ import {abvColor} from "../../helpers-fn/style-helper";
 const BeersListItem = (props) => {
 
 	const {
-		name, description,
-		abv, image, firstBrewed
+		name, description, id,
+		abv, image, firstBrewed,
 	} = props.beer;
-
-	const f = (e) => {
-		e.preventDefault();
-		console.log("hey")
-	};
 
 	return (
 		<div className="card mb-3 beer-list-item btn">
@@ -23,7 +18,7 @@ const BeersListItem = (props) => {
 				<p className="brewed">
 					First brewed: {firstBrewed}
 				</p>
-				<i onClick={f} className="fas fa-star item-cart-icon btn btn-outline-info"></i>
+				<i className="fas fa-star item-cart-icon btn btn-outline-info"></i>
 			</div>
 			<div className="row no-gutters align-items-center">
 				<div className="col-md-4 item-left-col">

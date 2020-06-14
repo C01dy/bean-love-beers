@@ -12,13 +12,18 @@ export default class PunkbeerService {
 	};
 
 	getAllBeer = async () => {
-		const res = await this.getResource('beers?page=20&per_page=9'); // max pgs 37
+		const res = await this.getResource('beers'); // max pgs 37
 		return res.map(this._transformBeers);
 	};
 
 	getBeer = async (id) => {
 		const res = await this.getResource(`beers/${id}`);
 		return this._transformBeer(res[0])
+	};
+
+	searchBeer = async (name) => {
+		const res = await this.getResource(`beers/?beer_name=${name}`);
+		return res.map(this._transformBeers)
 	};
 
 	_transformBeers(beers) {
@@ -38,13 +43,12 @@ export default class PunkbeerService {
 			id: beer.id,
       tagline: beer.tagline,
 			description: beer.description,
-      value: beer.boil_volume.value,
-      unit: beer.boil_volume.unit,
       abv: beer.abv, // крепкость
       ebc: beer.ebc, // насыщенность цвета
-			ingredients: beer.ingredients,
 			firstBrewed: beer.first_brewed,
 			image: beer.image_url,
+			ibu: beer.ibu,
+			foodPairing: beer.food_pairing,
     }
 	}
 }

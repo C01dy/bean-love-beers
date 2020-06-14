@@ -2,10 +2,9 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import BeersList from "../components/pages/beers-list";
-import ErrorIndicator from "../components/error-indicator";
-import Preloader from "../components/preloader";
-import {fetchBeersSuccess, fetchBeersRequest, fetchBeersError} from "../actions";
+import {fetchBeersSuccess, fetchBeersRequest, fetchBeersError, beerAddedToFavourite} from "../actions";
 import {WithPunkbeerService} from "../components/HOC";
+import RenderComponent from "../components/render-component";
 
 
 class BeersListContainer extends Component {
@@ -20,17 +19,10 @@ class BeersListContainer extends Component {
 
 	render() {
 		const {beers, isLoading, error} = this.props;
-
-		if (isLoading) {
-			return <Preloader/>
-		}
-
-		if (error) {
-			return <ErrorIndicator/>
-		}
-
 		return (
-			<BeersList beers={beers}/>
+			<RenderComponent isLoading={isLoading} error={error}>
+				<BeersList beers={beers}/>
+			</RenderComponent>
 		)
 	}
 }
@@ -42,7 +34,7 @@ const mapStateToProps = ({beers, isLoading, error}) => {
 const mapDispatchToProps = {
 	fetchBeersSuccess,
 	fetchBeersError,
-	fetchBeersRequest
+	fetchBeersRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)((WithPunkbeerService(BeersListContainer)));

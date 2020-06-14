@@ -1,13 +1,21 @@
 import {
-	FETCH_BEERS_SUCCESS, FETCH_BEERS_ERROR, FETCH_BEERS_REQUEST,
-	FETCH_BEER_SUCCESS, FETCH_BEER_ERROR, FETCH_BEER_REQUEST
+	FETCH_BEERS_SUCCESS,
+	FETCH_BEERS_ERROR,
+	FETCH_BEERS_REQUEST,
+	FETCH_BEER_SUCCESS,
+	FETCH_BEER_ERROR,
+	FETCH_BEER_REQUEST,
+	FETCH_SEARCH_BEER_SUCCESS,
+	FETCH_SEARCH_BEER_REQUEST,
+	FETCH_SEARCH_BEER_ERROR, BEER_ADDED_TO_FAVOURITE
 } from "../actions/actions-types";
 
 const initialState = {
 	beers: [],
 	beer: {},
 	isLoading: false,
-	error: false,
+	error: null,
+	favourites: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,8 +24,8 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				error: false,
-				beers: action.payload
+				error: null,
+				beers: action.payload,
 			};
 		case FETCH_BEERS_REQUEST:
 			return {
@@ -34,7 +42,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				error: false,
+				error: null,
 				beer: action.payload
 			};
 		case FETCH_BEER_REQUEST:
@@ -47,6 +55,45 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: action.payload,
+			};
+		case FETCH_SEARCH_BEER_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				error: null,
+				beers: action.payload
+			};
+		case FETCH_SEARCH_BEER_REQUEST:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case FETCH_SEARCH_BEER_ERROR:
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload
+			};
+		case BEER_ADDED_TO_FAVOURITE:
+
+			const beerId = action.payload;
+			const beer = state.beers.find(beer => beer.id === beerId);
+
+			const newFavBeer = {
+				name: beer.name,
+				abv: beer.abv,
+				id: beer.id,
+				image: beer.image_url,
+				description: beer.description,
+				firstBrewed: beer.first_brewed,
+			};
+
+			return {
+				...state,
+				favourites: [
+					...state.favourites,
+					newFavBeer
+				],
 			};
 		default:
 			return state;

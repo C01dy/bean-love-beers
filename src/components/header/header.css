@@ -17,6 +17,10 @@
     font-family: 'Abril Fatface', cursive;
 }
 
+.header-title {
+    color: #383838;
+}
+
 .header-title:hover {
     text-decoration-line: underline;
 }
@@ -24,5 +28,5 @@
 .header-row {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }

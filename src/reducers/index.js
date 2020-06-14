@@ -12,13 +12,15 @@ import {
 
 const initialState = {
 	beers: [],
+	searchedBeers: [],
 	beer: {},
 	isLoading: false,
 	error: null,
-	favourites: []
+	favourites: [],
 };
 
 export const reducer = (state = initialState, action) => {
+
 	switch (action.type) {
 		case FETCH_BEERS_SUCCESS:
 			return {
@@ -57,6 +59,8 @@ export const reducer = (state = initialState, action) => {
 				error: action.payload,
 			};
 		case FETCH_SEARCH_BEER_SUCCESS:
+			console.log(state.beers);
+			console.log(state.error);
 			return {
 				...state,
 				isLoading: false,

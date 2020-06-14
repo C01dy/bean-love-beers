@@ -9,9 +9,11 @@ const BeersList = ({beers}) => {
 			{
 				beers.map(beer => {
 					return (
-						<NavLink key={beer.id} to={`/beer/${beer.id}`}>
-							<BeersListItem beer={beer}/>
-						</NavLink>
+						<React.Fragment>
+							<NavLink key={beer.id} to={`/beer/${beer.id}`}>
+								<BeersListItem beer={beer}/>
+							</NavLink>
+						</React.Fragment>
 					)
 				})
 			}

@@ -5,6 +5,7 @@ import BeersList from "../components/pages/beers-list";
 import {fetchBeersSuccess, fetchBeersRequest, fetchBeersError, beerAddedToFavourite} from "../actions";
 import {WithPunkbeerService} from "../components/HOC";
 import RenderComponent from "../components/render-component";
+import SearchBar from "../components/search-bar";
 
 
 class BeersListContainer extends Component {
@@ -20,9 +21,12 @@ class BeersListContainer extends Component {
 	render() {
 		const {beers, isLoading, error} = this.props;
 		return (
-			<RenderComponent isLoading={isLoading} error={error}>
-				<BeersList beers={beers}/>
-			</RenderComponent>
+			<React.Fragment>
+				<SearchBar/>
+				<RenderComponent isLoading={isLoading} error={error}>
+					<BeersList beers={beers}/>
+				</RenderComponent>
+			</React.Fragment>
 		)
 	}
 }

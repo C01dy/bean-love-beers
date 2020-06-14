@@ -12,7 +12,7 @@ export default class PunkbeerService {
 	};
 
 	getAllBeer = async () => {
-		const res = await this.getResource('beers'); // max pgs 37
+		const res = await this.getResource('beers');
 		return res.map(this._transformBeers);
 	};
 

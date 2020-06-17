@@ -33,7 +33,7 @@ const SearchBar = (props) => {
 				       placeholder="Type to search"
 				       aria-label="Recipient's username" aria-describedby="button-addon2"/>
 				<div className="input-group-append">
-					<button className="btn btn-primary" id="button-addon2">Search</button>
+						<button className="btn btn-primary" id="button-addon2">Search</button>
 				</div>
 			</form>
 		</div>

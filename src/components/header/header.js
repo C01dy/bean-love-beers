@@ -18,8 +18,10 @@ const Header = () => {
 					</div>
 
 					<div className="col-lg-2 mr-0">
+						<NavLink to="/favourites">
 							<span className="pr-1">Favourites</span>
 							<i className="far fa-star header-cart-icon"></i>
+						</NavLink>
 					</div>
 				</div>
 			</div>

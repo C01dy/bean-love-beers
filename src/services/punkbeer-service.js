@@ -11,8 +11,8 @@ export default class PunkbeerService {
 		}
 	};
 
-	getAllBeer = async () => {
-		const res = await this.getResource('beers');
+	getAllBeer = async (pageNum = 1) => {
+		const res = await this.getResource(`beers?page=${pageNum}&per_page=25`);
 		return res.map(this._transformBeers);
 	};
 

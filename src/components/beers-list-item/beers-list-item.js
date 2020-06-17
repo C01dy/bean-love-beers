@@ -1,6 +1,8 @@
 import React from 'react';
 import './beers-list-item.css'
 import {abvColor} from "../../helpers-fn/style-helper";
+import {connect} from "react-redux";
+import {beerAddedToFavourite} from "../../actions";
 
 const BeersListItem = (props) => {
 
@@ -37,4 +39,8 @@ const BeersListItem = (props) => {
 	)
 };
 
-export default BeersListItem;
+const mapDispatchToProps = {
+	beerAddedToFavourite,
+};
+
+export default connect(null, mapDispatchToProps)(BeersListItem);

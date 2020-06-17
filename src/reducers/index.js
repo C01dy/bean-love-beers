@@ -7,12 +7,15 @@ import {
 	FETCH_BEER_REQUEST,
 	FETCH_SEARCH_BEER_SUCCESS,
 	FETCH_SEARCH_BEER_REQUEST,
-	FETCH_SEARCH_BEER_ERROR, BEER_ADDED_TO_FAVOURITE
+	FETCH_SEARCH_BEER_ERROR,
+	BEER_ADDED_TO_FAVOURITE,
+	FETCH_OTHER_PAGE_SUCCESS,
+	FETCH_OTHER_PAGE_REQUEST,
+	FETCH_OTHER_PAGE_ERROR
 } from "../actions/actions-types";
 
 const initialState = {
 	beers: [],
-	searchedBeers: [],
 	beer: {},
 	isLoading: false,
 	error: null,
@@ -79,7 +82,6 @@ export const reducer = (state = initialState, action) => {
 				error: action.payload
 			};
 		case BEER_ADDED_TO_FAVOURITE:
-
 			const beerId = action.payload;
 			const beer = state.beers.find(beer => beer.id === beerId);
 

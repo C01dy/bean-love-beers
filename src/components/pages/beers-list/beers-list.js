@@ -5,19 +5,19 @@ import {NavLink} from "react-router-dom";
 
 const BeersList = ({beers}) => {
 	return (
-		<div className="beer-list container">
-			{
-				beers.map(beer => {
-					return (
-						<React.Fragment>
+		<React.Fragment>
+			<div className="beer-list container">
+				{
+					beers.map(beer => {
+						return (
 							<NavLink key={beer.id} to={`/beer/${beer.id}`}>
 								<BeersListItem beer={beer}/>
 							</NavLink>
-						</React.Fragment>
-					)
-				})
-			}
-		</div>
+						)
+					})
+				}
+			</div>
+		</React.Fragment>
 	)
 };
 

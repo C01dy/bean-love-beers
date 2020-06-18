@@ -9,9 +9,6 @@ import {
 	FETCH_SEARCH_BEER_REQUEST,
 	FETCH_SEARCH_BEER_ERROR,
 	BEER_ADDED_TO_FAVOURITE,
-	FETCH_OTHER_PAGE_SUCCESS,
-	FETCH_OTHER_PAGE_REQUEST,
-	FETCH_OTHER_PAGE_ERROR
 } from "../actions/actions-types";
 
 const initialState = {
@@ -87,11 +84,11 @@ export const reducer = (state = initialState, action) => {
 
 			const newFavBeer = {
 				name: beer.name,
-				abv: beer.abv,
+				abv: beer.abv, // Крепкость
 				id: beer.id,
-				image: beer.image_url,
+				image: beer.image,
 				description: beer.description,
-				firstBrewed: beer.first_brewed,
+				firstBrewed: beer.firstBrewed,
 			};
 
 			return {

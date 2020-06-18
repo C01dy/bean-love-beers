@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 
 const BeersList = ({beers}) => {
 	return (
-		<React.Fragment>
 			<div className="beer-list container">
 				{
 					beers.map(beer => {
@@ -17,7 +16,6 @@ const BeersList = ({beers}) => {
 					})
 				}
 			</div>
-		</React.Fragment>
 	)
 };
 

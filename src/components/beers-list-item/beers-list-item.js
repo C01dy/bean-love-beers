@@ -11,6 +11,11 @@ const BeersListItem = (props) => {
 		abv, image, firstBrewed,
 	} = props.beer;
 
+	const onAddedToFavourite = e => {
+		e.preventDefault();
+		props.beerAddedToFavourite(id)
+	};
+
 	return (
 		<div className="card mb-3 beer-list-item btn">
 			<div className="row no-gutters beers-info">
@@ -20,7 +25,7 @@ const BeersListItem = (props) => {
 				<p className="brewed">
 					First brewed: {firstBrewed}
 				</p>
-				<i className="fas fa-star item-cart-icon btn btn-outline-info"></i>
+				<i onClick={onAddedToFavourite} className="fas fa-star item-cart-icon btn btn-outline-info"></i>
 			</div>
 			<div className="row no-gutters align-items-center">
 				<div className="col-md-4 item-left-col">

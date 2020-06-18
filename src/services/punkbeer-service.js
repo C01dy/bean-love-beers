@@ -34,6 +34,7 @@ export default class PunkbeerService {
 			image: beers.image_url,
 			description: beers.description,
 			firstBrewed: beers.first_brewed,
+			favourite: false
 		}
 	}
 

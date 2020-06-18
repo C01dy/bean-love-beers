@@ -7,7 +7,6 @@
     min-height: 210px;
     overflow: hidden;
     max-width: 350px;
-    /*border: none;*/
 }
 
 .beer-list-item:hover {
@@ -51,7 +50,6 @@
     padding: 6px;
     border-radius: 50%;
     border: none;
-    /*align-self: flex-end;*/
 }
 
 .beers-info {

@@ -8,7 +8,7 @@ import {
 	FETCH_SEARCH_BEER_SUCCESS,
 	FETCH_SEARCH_BEER_REQUEST,
 	FETCH_SEARCH_BEER_ERROR,
-	BEER_ADDED_TO_FAVOURITE,
+	BEER_TOGGLE_FAVOURITE,
 } from "../actions/actions-types";
 
 const initialState = {
@@ -78,9 +78,12 @@ export const reducer = (state = initialState, action) => {
 				isLoading: false,
 				error: action.payload
 			};
-		case BEER_ADDED_TO_FAVOURITE:
+		case BEER_TOGGLE_FAVOURITE:
 			const beerId = action.payload;
 			const beer = state.beers.find(beer => beer.id === beerId);
+			const itemIdx = state.favourites.findIndex(({id}) => id === beerId);
+			const item = state.favourites[itemIdx];
+			console.log(beer.id, itemIdx);
 
 			const newFavBeer = {
 				name: beer.name,
@@ -91,13 +94,23 @@ export const reducer = (state = initialState, action) => {
 				firstBrewed: beer.firstBrewed,
 			};
 
-			return {
-				...state,
-				favourites: [
-					...state.favourites,
-					newFavBeer
-				],
-			};
+			if (!item) {
+				return {
+					...state,
+					favourites: [
+						...state.favourites,
+						newFavBeer
+					],
+				};
+			} else {
+				return {
+					...state,
+					favourites: [
+						...state.favourites.slice(0, itemIdx),
+						...state.favourites.slice(itemIdx + 1)
+					],
+				};
+			}
 		default:
 			return state;
 	}

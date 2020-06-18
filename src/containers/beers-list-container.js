@@ -7,6 +7,7 @@ import {WithPunkbeerService} from "../components/HOC";
 import RenderComponent from "../components/render-component";
 import SearchBar from "../components/search-bar";
 import PagesButtonGroup from "../components/pages-button-group";
+import {getDataHelper} from "../helpers-fn/request-helper";
 
 
 class BeersListContainer extends Component {
@@ -23,19 +24,18 @@ class BeersListContainer extends Component {
 
 	componentDidMount() {
 		const {fetchBeersSuccess, fetchBeersError, fetchBeersRequest, punkbeerService} = this.props;
-		fetchBeersRequest();
-		punkbeerService.getAllBeer()
-			.then(beers => fetchBeersSuccess(beers))
-			.catch(err => fetchBeersError(err));
+		getDataHelper(punkbeerService.getAllBeer(), fetchBeersSuccess, fetchBeersError, fetchBeersRequest)
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		const {fetchBeersSuccess, fetchBeersError, fetchBeersRequest, punkbeerService} = this.props;
 		if (prevState.pageNum !== this.state.pageNum) {
-			const {fetchBeersSuccess, fetchBeersError, fetchBeersRequest, punkbeerService} = this.props;
-			fetchBeersRequest();
-			punkbeerService.getAllBeer(this.state.pageNum)
-				.then(beers => fetchBeersSuccess(beers))
-				.catch(err => fetchBeersError(err));
+			getDataHelper(
+				punkbeerService.getAllBeer(this.state.pageNum),
+				fetchBeersSuccess,
+				fetchBeersError,
+				fetchBeersRequest
+			)
 		}
 	}
 

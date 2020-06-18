@@ -8,10 +8,7 @@ import {
 	FETCH_SEARCH_BEER_SUCCESS,
 	FETCH_SEARCH_BEER_REQUEST,
 	FETCH_SEARCH_BEER_ERROR,
-	BEER_ADDED_TO_FAVOURITE,
-	FETCH_OTHER_PAGE_SUCCESS,
-	FETCH_OTHER_PAGE_REQUEST,
-	FETCH_OTHER_PAGE_ERROR
+	BEER_TOGGLE_FAVOURITE,
 } from "./actions-types";
 
 const fetchBeersSuccess = (beers) => {
@@ -64,9 +61,9 @@ const fetchSearchBeerError = (error) => {
 	}
 };
 
-const beerAddedToFavourite = (itemId) => {
+const beerToggleFavourite = (itemId) => {
 	return {
-		type: BEER_ADDED_TO_FAVOURITE,
+		type: BEER_TOGGLE_FAVOURITE,
 		payload: itemId
 	}
 };
@@ -76,5 +73,5 @@ export {
 	fetchBeerSuccess, fetchBeerError, fetchBeerRequest,
 	fetchSearchBeerSuccess, fetchSearchBeerError, fetchSearchBeerRequest,
 
-	beerAddedToFavourite
+	beerToggleFavourite
 }

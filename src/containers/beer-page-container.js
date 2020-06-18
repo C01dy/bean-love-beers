@@ -5,16 +5,14 @@ import {fetchBeerSuccess, fetchBeerRequest, fetchBeerError} from "../actions";
 import {WithPunkbeerService} from '../components/HOC';
 import {BeerPage} from '../components/pages/beer-page'
 import RenderComponent from "../components/render-component";
+import {getDataHelper} from "../helpers-fn/request-helper";
 
 
 class BeerPageContainer extends Component {
 
 	componentDidMount() {
 		const {punkbeerService, itemId, fetchBeerSuccess, fetchBeerError, fetchBeerRequest} = this.props;
-		fetchBeerRequest();
-		punkbeerService.getBeer(itemId)
-			.then(beer => fetchBeerSuccess(beer))
-			.catch(error => fetchBeerError(error));
+		getDataHelper(punkbeerService.getBeer(itemId), fetchBeerSuccess, fetchBeerError, fetchBeerRequest)
 	}
 
 	render() {

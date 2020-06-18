@@ -2,7 +2,7 @@ import React from 'react';
 import './beers-list-item.css'
 import {abvColor} from "../../helpers-fn/style-helper";
 import {connect} from "react-redux";
-import {beerAddedToFavourite} from "../../actions";
+import {beerToggleFavourite} from "../../actions";
 
 const BeersListItem = (props) => {
 
@@ -13,7 +13,7 @@ const BeersListItem = (props) => {
 
 	const onAddedToFavourite = e => {
 		e.preventDefault();
-		props.beerAddedToFavourite(id)
+		props.beerToggleFavourite(id)
 	};
 
 	return (
@@ -25,7 +25,9 @@ const BeersListItem = (props) => {
 				<p className="brewed">
 					First brewed: {firstBrewed}
 				</p>
-				<i onClick={onAddedToFavourite} className="fas fa-star item-cart-icon btn btn-outline-info"></i>
+				<i onClick={onAddedToFavourite}
+				   className={`fas fa-star item-cart-icon btn btn-outline-info`}>
+				</i>
 			</div>
 			<div className="row no-gutters align-items-center">
 				<div className="col-md-4 item-left-col">
@@ -45,7 +47,7 @@ const BeersListItem = (props) => {
 };
 
 const mapDispatchToProps = {
-	beerAddedToFavourite,
+	beerToggleFavourite,
 };
 
 export default connect(null, mapDispatchToProps)(BeersListItem);

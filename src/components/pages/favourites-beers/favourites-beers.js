@@ -4,6 +4,15 @@ import {connect} from "react-redux";
 import BeersListItem from "../../beers-list-item/beers-list-item";
 
 const FavouriteBeers = ({favourites}) => {
+
+	if (!favourites.length) {
+		return (
+			<div className="row justify-content-center mt-5">
+				<h1 className="card-title">You not added beers to favourite</h1>
+			</div>
+		)
+	}
+
 	return (
 		<div className="beer-list container">
 			{

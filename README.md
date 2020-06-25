@@ -11,6 +11,10 @@ A simple application that allows you to browse and search information about vari
 * Redux
 * React-redux
 * React hooks
+### Also
+* React-router
+* HOC (High Ordered Components)
+* API - https://punkapi.com
 
 ## Available Scripts
 In the project directory, you can run:

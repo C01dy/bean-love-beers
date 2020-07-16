@@ -40,12 +40,12 @@ class BeersListContainer extends Component {
 	}
 
 	render() {
-		const {beers, isLoading, error} = this.props;
+		const {beers, favourites, isLoading, error} = this.props;
 		return (
 			<React.Fragment>
 				<SearchBar/>
 				<RenderComponent isLoading={isLoading} error={error}>
-					<BeersList beers={beers}/>
+					<BeersList beers={beers} favourites={favourites}/>
 					<PagesButtonGroup onNumChange={this.onNumChange} pageNum={this.state.pageNum}/>
 				</RenderComponent>
 			</React.Fragment>
@@ -53,8 +53,8 @@ class BeersListContainer extends Component {
 	}
 }
 
-const mapStateToProps = ({beers, isLoading, error}) => {
-	return {beers, isLoading, error}
+const mapStateToProps = ({beers, isLoading, error, favourites}) => {
+	return {beers, isLoading, error, favourites}
 };
 
 const mapDispatchToProps = {

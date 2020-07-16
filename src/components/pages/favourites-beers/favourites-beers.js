@@ -19,7 +19,7 @@ const FavouriteBeers = ({favourites}) => {
 				favourites.map(beer => {
 					return (
 						<NavLink key={beer.id} to={`/beer/${beer.id}`}>
-							<BeersListItem beer={beer}/>
+							<BeersListItem beer={beer} favourites={favourites}/>
 						</NavLink>
 					)
 				})

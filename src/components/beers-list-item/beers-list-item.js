@@ -12,9 +12,18 @@ const BeersListItem = (props) => {
 	} = props.beer;
 
 	const onAddedToFavourite = e => {
-		e.preventDefault();
+		e.preventDefault()
 		props.beerToggleFavourite(id)
 	};
+
+	const isFav = () => {
+		const fav = props.favourites.findIndex(item => item.id === id);
+		if (fav > -1) {
+			return 'active'
+		} else {
+			return ''
+		}
+	}
 
 	return (
 		<div className="card mb-3 beer-list-item btn">
@@ -26,7 +35,7 @@ const BeersListItem = (props) => {
 					First brewed: {firstBrewed}
 				</p>
 				<i onClick={onAddedToFavourite}
-				   className={`fas fa-star item-cart-icon btn btn-outline-info`}>
+				   className={`fas fa-star item-cart-icon btn btn-outline-info ${isFav()}`}>
 				</i>
 			</div>
 			<div className="row no-gutters align-items-center">

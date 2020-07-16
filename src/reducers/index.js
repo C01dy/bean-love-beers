@@ -80,21 +80,19 @@ export const reducer = (state = initialState, action) => {
 			};
 		case BEER_TOGGLE_FAVOURITE:
 			const beerId = action.payload;
-			const beer = state.beers.find(beer => beer.id === beerId);
 			const itemIdx = state.favourites.findIndex(({id}) => id === beerId);
 			const item = state.favourites[itemIdx];
-			console.log(beer.id, itemIdx);
-
-			const newFavBeer = {
-				name: beer.name,
-				abv: beer.abv, // Крепкость
-				id: beer.id,
-				image: beer.image,
-				description: beer.description,
-				firstBrewed: beer.firstBrewed,
-			};
 
 			if (!item) {
+				const beer = state.beers.find(beer => beer.id === beerId);
+				const newFavBeer = {
+					name: beer.name,
+					abv: beer.abv, // Крепкость
+					id: beer.id,
+					image: beer.image,
+					description: beer.description,
+					firstBrewed: beer.firstBrewed,
+				};
 				return {
 					...state,
 					favourites: [

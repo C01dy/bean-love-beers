@@ -13,7 +13,7 @@ A simple application that allows you to browse and search information about vari
 * React hooks
 ### Also
 * React-router
-* HOC (High Ordered Components)
+* Redux-thunk
 * API - https://punkapi.com
 
 ## Available Scripts

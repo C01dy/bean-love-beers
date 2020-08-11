@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
-import {fetchBeerSuccess, fetchBeerRequest, fetchBeerError} from "../actions";
-import {WithPunkbeerService} from '../components/HOC';
+import {fetchOneBeer} from "../actions";
 import {BeerPage} from '../components/pages/beer-page'
 import RenderComponent from "../components/render-component";
-import {getDataHelper} from "../helpers-fn/request-helper";
 
 
 class BeerPageContainer extends Component {
 
 	componentDidMount() {
-		const {punkbeerService, itemId, fetchBeerSuccess, fetchBeerError, fetchBeerRequest} = this.props;
-		getDataHelper(punkbeerService.getBeer(itemId), fetchBeerSuccess, fetchBeerError, fetchBeerRequest)
+		this.props.onGetBeer(this.props.itemId)
 	}
 
 	render() {
@@ -27,12 +24,12 @@ class BeerPageContainer extends Component {
 
 const mapStateToProps = ({beer, isLoading, error}) => {
 	return {beer, isLoading, error}
-};
+}
 
-const mapDispatchToProps = {
-	fetchBeerSuccess,
-	fetchBeerError,
-	fetchBeerRequest
-};
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetBeer: beer_id => dispatch(fetchOneBeer(beer_id))
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithPunkbeerService(BeerPageContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(BeerPageContainer)

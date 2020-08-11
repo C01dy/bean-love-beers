@@ -2,7 +2,7 @@ import React from 'react';
 import './beers-list-item.css'
 import {abvColor} from "../../helpers-fn/style-helper";
 import {connect} from "react-redux";
-import {beerToggleFavourite} from "../../actions";
+import {toggleFavBeer} from "../../actions";
 
 const BeersListItem = (props) => {
 
@@ -13,7 +13,7 @@ const BeersListItem = (props) => {
 
 	const onAddedToFavourite = e => {
 		e.preventDefault()
-		props.beerToggleFavourite(id)
+		props.toggleFavBeer(id)
 	};
 
 	const isFav = () => {
@@ -56,7 +56,7 @@ const BeersListItem = (props) => {
 };
 
 const mapDispatchToProps = {
-	beerToggleFavourite,
+	toggleFavBeer,
 };
 
 export default connect(null, mapDispatchToProps)(BeersListItem);

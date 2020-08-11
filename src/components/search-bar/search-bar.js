@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-import WithPunkbeerService from "../HOC/with-punkbeer-service";
 import {connect} from "react-redux";
-import {fetchSearchBeerSuccess, fetchSearchBeerError, fetchSearchBeerRequest} from "../../actions";
+import {fetchSearchBeer} from "../../actions";
 
 const SearchBar = (props) => {
-
-	const {punkbeerService, fetchSearchBeerSuccess, fetchSearchBeerError, fetchSearchBeerRequest} = props;
 	const [inputValue, setInputValue] = useState("");
 
 	const onInputValueChange = e => {
@@ -13,13 +10,10 @@ const SearchBar = (props) => {
 		return setInputValue(e.currentTarget.value)
 	};
 
-	const onSearchBeers = e => {
+	const onSearchBeer = e => {
 		e.preventDefault();
 		if (inputValue) {
-			fetchSearchBeerRequest();
-			punkbeerService.searchBeer(inputValue)
-				.then(beers => fetchSearchBeerSuccess(beers))
-				.catch(err => fetchSearchBeerError(err));
+			props.onSearchBeer(inputValue)
 			setInputValue("")
 		} else {
 			return alert("Put beer name!")
@@ -28,7 +22,7 @@ const SearchBar = (props) => {
 
 	return (
 		<div className="row mb-3 ml-auto mr-auto mb-3" style={{maxWidth: "540px"}}>
-			<form onSubmit={onSearchBeers} className="input-group">
+			<form onSubmit={onSearchBeer} className="input-group">
 				<input value={inputValue} onChange={onInputValueChange} type="text" className="form-control"
 				       placeholder="Type to search"
 				       aria-label="Recipient's username" aria-describedby="button-addon2"/>
@@ -40,10 +34,10 @@ const SearchBar = (props) => {
 	)
 };
 
-const mapDispatchToProps = {
-	fetchSearchBeerSuccess,
-	fetchSearchBeerError,
-	fetchSearchBeerRequest
+const mapDispatchToProps = dispatch => {
+	return {
+		onSearchBeer: beer_name => dispatch(fetchSearchBeer(beer_name))
+	}
 };
 
-export default connect(null, mapDispatchToProps)(WithPunkbeerService(SearchBar));
+export default connect(null, mapDispatchToProps)(SearchBar);

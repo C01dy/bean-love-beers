@@ -2,40 +2,31 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import BeersList from "../components/pages/beers-list";
-import {fetchBeersSuccess, fetchBeersRequest, fetchBeersError} from "../actions";
-import {WithPunkbeerService} from "../components/HOC";
+import {fetchBeers} from "../actions";
 import RenderComponent from "../components/render-component";
 import SearchBar from "../components/search-bar";
 import PagesButtonGroup from "../components/pages-button-group";
-import {getDataHelper} from "../helpers-fn/request-helper";
-
 
 class BeersListContainer extends Component {
 
+
 	state = {
 		pageNum: 1
-	};
+	}
 
 	onNumChange = (newNum) => {
 		return this.setState({
 			pageNum: newNum
 		})
-	};
+	}
 
 	componentDidMount() {
-		const {fetchBeersSuccess, fetchBeersError, fetchBeersRequest, punkbeerService} = this.props;
-		getDataHelper(punkbeerService.getAllBeer(), fetchBeersSuccess, fetchBeersError, fetchBeersRequest)
+		this.props.onGetBeers()
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		const {fetchBeersSuccess, fetchBeersError, fetchBeersRequest, punkbeerService} = this.props;
 		if (prevState.pageNum !== this.state.pageNum) {
-			getDataHelper(
-				punkbeerService.getAllBeer(this.state.pageNum),
-				fetchBeersSuccess,
-				fetchBeersError,
-				fetchBeersRequest
-			)
+		  this.props.onGetBeers(this.state.pageNum)
 		}
 	}
 
@@ -55,12 +46,12 @@ class BeersListContainer extends Component {
 
 const mapStateToProps = ({beers, isLoading, error, favourites}) => {
 	return {beers, isLoading, error, favourites}
-};
+}
 
-const mapDispatchToProps = {
-	fetchBeersSuccess,
-	fetchBeersError,
-	fetchBeersRequest,
-};
+const mapDispatchToProps = dispatch => {
+	return {
+		onGetBeers: (page_num = 1) => dispatch(fetchBeers(page_num))
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)((WithPunkbeerService(BeersListContainer)));
+export default connect(mapStateToProps, mapDispatchToProps)(BeersListContainer);

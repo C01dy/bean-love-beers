@@ -8,7 +8,7 @@ import {DescriptionListItem} from "./index"
 const BeerPage = (props) => {
 
 	const {
-		image, name, description, foodPairing, id,
+		image, name, description, foodPairing,
 		ebc, tagline, abv, ibu,
 	} = props.beer;
 
@@ -50,8 +50,8 @@ const BeerPage = (props) => {
 							<p className="card-text mt-2">{description}</p>
 							<ul className="list-group list-group-horizontal-md">
 								<li className="list-group-item bg-info food-pairing-list-item">Food pairing:</li>
-								{foodPairing ? foodPairing.map(i => <li
-									className="food-pairing-list-item m-0 list-group-item">{i}</li>) : null}
+								{foodPairing ? foodPairing.map((item, idx) => <li key={idx}
+									className="food-pairing-list-item m-0 list-group-item">{item}</li>) : null}
 							</ul>
 						</div>
 					</div>

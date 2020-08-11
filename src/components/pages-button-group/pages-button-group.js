@@ -4,12 +4,12 @@ const PagesButtonGroup = ({onNumChange, pageNum}) => {
 
 	const renderButtons = () => {
 		const arr = new Array(13).fill(true);
-		return arr.map((item, index) => {
+		return arr.map((item, idx) => {
 			return (
-				<li className={`page-item ${index + 1 == pageNum ? "active" : ""}`} style={{cursor: "pointer"}}>
+				<li key={idx} className={`page-item ${idx + 1 === pageNum ? "active" : ""}`} style={{cursor: "pointer"}}>
 					<span onClick={e => onNumChange(e.currentTarget.innerText)}
 					      className={`page-link`}>
-						{index + 1}
+						{idx + 1}
 					</span>
 				</li>
 			)
